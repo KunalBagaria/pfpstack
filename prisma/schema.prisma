@@ -14,9 +14,8 @@ generator client {
 }
 
 model User {
-	id Int @default(autoincrement()) @id
-	otp String
-	name String
+	id Int @id @default(autoincrement())
+	name String?
 	image String
-	public_key String
+	public_key String @unique
 }

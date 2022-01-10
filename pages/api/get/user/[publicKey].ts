@@ -1,4 +1,4 @@
-import prisma from "../../lib/prisma";
+import prisma from '../../../../lib/prisma';
 import type {
 	NextApiRequest,
 	NextApiResponse
@@ -12,12 +12,14 @@ export default async function assetHandler(req: NextApiRequest, res: NextApiResp
 	switch (method) {
 		case "GET":
 			try {
-				const users = await prisma.user.findMany();
-				res.status(200).json(users);
+				const { publicKey }: any = req.query
+				if (!publicKey) { res.status(400).json({ error: "Public Key not found" }); return }
+				const user = await prisma.user.findFirst({ where: { public_key: publicKey } });
+				res.status(200).json(user);
 			} catch (e) {
 				console.error("Request error", e);
 				res.status(500).json({
-					error: "Error fetching users"
+					error: "Error fetching user"
 				});
 			}
 			break;

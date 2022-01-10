@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import { DefaultHead } from '../layouts/Head'
 
-const Home: NextPage = () => {
+const Update: NextPage = () => {
 	return (
 		<>
-			<DefaultHead />
+			<DefaultHead title="Update Profile"/>
 		</>
 	)
 }
 
-export default Home
+export default Update
