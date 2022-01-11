@@ -10,6 +10,12 @@ npm run dev
 yarn dev
 ```
 
+Create a new .env file with the following variables:
+```
+DATABASE_URL="mysql://root@127.0.0.1:3309/<your_db>"
+SHADOW_DATABASE_URL="mysql://root@127.0.0.1:3310/<your_db>"
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
