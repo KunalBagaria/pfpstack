@@ -36,10 +36,14 @@ const Update: NextPage = () => {
 	console.log(image)
 
 	const getUser = async (pKey: string) => {
-		const request = await fetch(`/api/get/user/${pKey}`)
-		const response = await request.json()
-		if (response.name) setName(response.name)
-		if (response.image) setImage(response.image)
+		try {
+			const request = await fetch(`/api/get/user/${pKey}`)
+			const response = await request.json()
+			if (response.name) setName(response.name)
+			if (response.image) setImage(response.image)
+		} catch (e) {
+			console.error(e)
+		}
 	}
 
 	const connect = async () => {
@@ -47,12 +51,12 @@ const Update: NextPage = () => {
 		const pKey = response.toString();
 		if (!pKey) return
 		setPublicKey(pKey)
-		getUser(pKey)
 		const fNfts = await getSolanaNFTs(pKey)
 		if (!fNfts) return
 		const tokenAddresses = fNfts.map((fNft) => fNft.tokenAddress)
 		const nftImages = await Promise.all(tokenAddresses.map((address) => fetchSolanaNftImage(address)))
 		setNFTs(nftImages)
+		getUser(pKey)
 	}
 
 	const update = async () => {

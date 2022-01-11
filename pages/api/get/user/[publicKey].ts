@@ -15,6 +15,7 @@ export default async function assetHandler(req: NextApiRequest, res: NextApiResp
 				const { publicKey }: any = req.query
 				if (!publicKey) { res.status(400).json({ error: "Public Key not found" }); return }
 				const user = await prisma.user.findFirst({ where: { public_key: publicKey } });
+				if (!user) { res.status(404).json({ error: "User not found" }); return }
 				res.status(200).json(user);
 			} catch (e) {
 				console.error("Request error", e);
