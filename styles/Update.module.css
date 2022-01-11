@@ -1,3 +1,21 @@
+.nftGrid {
+	margin: 3rem 0rem;
+	display: grid;
+	width: max-content;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 1rem;
+	grid-row-gap: 1rem;
+}
+
+.nft {
+	cursor: pointer;
+	border-radius: 0.5rem;
+	transition: opacity 0.2s linear;
+	width: 10rem;
+	height: 10rem;
+	object-fit: cover;
+}
+
 .nft:hover {
-	opacity: 0.8;
+	opacity: 0.85;
 }
