@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 declare global {
     interface Window {
         solana: any;

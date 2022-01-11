@@ -2,13 +2,13 @@ import type { NextPage } from 'next'
 import { DefaultHead } from '../layouts/Head'
 import { Navbar } from '../layouts/Navbar'
 
-const Home: NextPage = () => {
+const Docs: NextPage = () => {
 	return (
 		<>
-			<DefaultHead />
+			<DefaultHead title="API Documentation" />
 			<Navbar />
 		</>
 	)
 }
 
-export default Home
+export default Docs
