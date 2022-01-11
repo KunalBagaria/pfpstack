@@ -1,11 +1,11 @@
 export const getSolanaNFTs = async (publicKey: string): Promise < Array < any > | undefined > => {
-	const request = await fetch(`https://public-api.solscan.io/account/tokens?account=${publicKey}`)
-	const response = await request.json()
-	if (response.error || response.length === 0) {
-		console.error(response.error)
-		return
+	try {
+		const request = await fetch(`https://public-api.solscan.io/account/tokens?account=${publicKey}`)
+		const response = await request.json()
+		return response.filter((nft: any) => nft.tokenAmount.decimals === 0)
+	} catch (e) {
+		console.error(e)
 	}
-	return response.filter((nft: any) => nft.tokenAmount.decimals === 0 && nft.tokenAmount.uiAmount > 0)
 }
 
 export const fetchSolanaNftImage = async (address: string) => {

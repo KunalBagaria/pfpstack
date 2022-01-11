@@ -1,14 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next'
-import { useState, forwardRef } from 'react'
+import { useState } from 'react'
 import {
 	Typography,
 	Container,
 	TextField,
 	Button,
-	ImageListItem,
 	Skeleton,
-	ImageList
 } from '@mui/material'
 import toast from 'react-hot-toast'
 import { toasterPromise } from '../components/toasterNetworkPromise'
@@ -46,8 +44,11 @@ const Update: NextPage = () => {
 		const fNfts = await getSolanaNFTs(pKey)
 		if (!fNfts) return
 		const tokenAddresses = fNfts.map((fNft) => fNft.tokenAddress)
-		const nftImages = await Promise.all(tokenAddresses.map((address) => fetchSolanaNftImage(address)))
-		setNFTs(nftImages)
+		tokenAddresses.forEach(async (tokenAddress) => {
+			const nft = await fetchSolanaNftImage(tokenAddress)
+			if (!nft) return
+			setNFTs((prev) => [...prev, nft])
+		})
 		getUser(pKey)
 	}
 
