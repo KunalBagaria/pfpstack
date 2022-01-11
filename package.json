@@ -1,6 +1,6 @@
 {
-	"name": "pfpstack",
-	"private": true,
+	"name": "nftpic",
+	"private": false,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { DefaultHead } from '../layouts/Head'
 import { Navbar } from '../layouts/Navbar'
 import {
@@ -21,12 +22,16 @@ const Home: NextPage = () => {
 					Streamlined API for syncing your NFT avatar across dApps
 				</Typography>
 				<Stack direction="row" sx={{ marginTop: '2rem' }} gap={2} alignItems="center">
-					<Button variant="outlined" color="primary" href="/docs">
-						API Docs
-					</Button>
-					<Button variant="outlined" color="secondary" href="/update">
-						Update Profile
-					</Button>
+					<Link href="/docs">
+						<a>
+							<Button variant="outlined">API Docs</Button>
+						</a>
+					</Link>
+					<Link href="/update">
+						<a>
+							<Button variant="outlined">Update Profile</Button>
+						</a>
+					</Link>
 				</Stack>
 			</Container>
 		</>

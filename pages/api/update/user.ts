@@ -19,7 +19,7 @@ export default async function assetHandler(req: NextApiRequest, res: NextApiResp
 
 				const uSig = new Uint8Array(signature.signature.data)
 				const bPubKey = new PublicKey(publicKey).toBytes()
-				const message = new TextEncoder().encode('$PFPSTACK')
+				const message = new TextEncoder().encode('$NFTPIC')
 				const verified = nacl.sign.detached.verify(message, uSig, bPubKey)
 				if (!verified) { res.status(400).json({ error: "Unauthorized" }); return }
 
