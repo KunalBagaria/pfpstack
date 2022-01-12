@@ -54,7 +54,7 @@ const Update: NextPage = () => {
 
 	const update = async () => {
 		if (!image) return toast.error('Please select an image')
-		const signature = await signMessage('$NFTPIC')
+		const signature = await signMessage('$pfpstack')
 		if (!signature) return
 		const data = {
 			name,

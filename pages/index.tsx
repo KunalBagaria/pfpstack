@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 			<Navbar />
 			<Container maxWidth="lg">
 				<Typography marginTop={10} color="primary" fontFamily="quicksand" variant="h4">
-					nftpic
+					pfpstack
 				</Typography>
 				<Typography marginTop={2} color="secondary" fontFamily="quicksand" variant="h6">
 					Streamlined API for syncing your NFT avatar across dApps

@@ -18,7 +18,7 @@ export function Navbar() {
 							<Stack direction="row" alignItems="center">
 								<CameraIcon />
 								<Typography marginLeft={1} fontFamily="quicksand" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-									nftpic
+									pfpstack
 								</Typography>
 							</Stack>
 						</a>
