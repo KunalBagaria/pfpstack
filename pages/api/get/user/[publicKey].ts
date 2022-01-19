@@ -3,6 +3,7 @@ import type {
 	NextApiRequest,
 	NextApiResponse
 } from 'next'
+import { getSolDomain } from '../../../../components/getSolDomain'
 
 export default async function assetHandler(req: NextApiRequest, res: NextApiResponse) {
 	const {
@@ -12,8 +13,14 @@ export default async function assetHandler(req: NextApiRequest, res: NextApiResp
 	switch (method) {
 		case "GET":
 			try {
-				const { publicKey }: any = req.query
+				let { publicKey }: any = req.query
 				if (!publicKey) { res.status(400).json({ error: "Public Key not found" }); return }
+				if (publicKey.includes('.sol')) {
+					const domain = publicKey
+					const owner = await getSolDomain(domain)
+					if (!owner) { res.status(404).json({ error: "Name service domain not registered "}); return }
+					publicKey = owner
+				}
 				const user = await prisma.user.findFirst({ where: { public_key: publicKey } });
 				if (!user) { res.status(404).json({ error: "User not found" }); return }
 				res.status(200).json(user);

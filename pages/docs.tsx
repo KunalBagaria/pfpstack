@@ -32,8 +32,23 @@ const Docs: NextPage = () => {
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography variant="h6">
-								Get the profile of a public key.
+								Get the profile using public key.
 								Example response <Link href="/api/get/user/8kgbAgt8oedfprQ9LWekUh6rbY264Nv75eunHPpkbYGX"><a style={{ color: '#1976d2' }}>here</a></Link>
+							</Typography>
+						</AccordionDetails>
+					</Accordion>
+					<Accordion>
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon />}
+							aria-controls="panel1a-content"
+							id="panel1a-header"
+						>
+							<Typography>{'/api/get/user/{name_service_domain}'}</Typography>
+						</AccordionSummary>
+						<AccordionDetails>
+							<Typography variant="h6">
+								Get the profile using name service domain.
+								Example response <Link href="/api/get/user/kunal.sol"><a style={{ color: '#1976d2' }}>here</a></Link>
 							</Typography>
 						</AccordionDetails>
 					</Accordion>
